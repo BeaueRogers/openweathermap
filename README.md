@@ -4,7 +4,7 @@ Upon pulling the files from github you need to install the following bower and n
 
 Enter into terminal:
 
-bower install bootstrap jquery firebase handlebars
+bower install bootstrap jquery firebase handlebars requirejs require-handlebars-plugin
 
 then you need to enter into terminal:
 

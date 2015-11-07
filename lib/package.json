@@ -8,20 +8,4 @@
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-contrib-watch": "^0.6.1",
     "matchdep": "^0.3.0"
-  },
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/leifehetland/Fear-Film.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/leifehetland/Fear-Film/issues"
-  },
-  "homepage": "https://github.com/leifehetland/Fear-Film#readme",
-  "description": ""
-}
+  }
