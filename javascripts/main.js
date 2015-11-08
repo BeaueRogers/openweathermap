@@ -17,8 +17,7 @@ requirejs(
     ["jquery", "hbs", "bootstrap", "templates", "userAuth", "q", "zipcodesearch"],
     function($, Handlebars, bootstrap, templates, userAuth, q, zipcodesearch) {
 
-      require(['hbs!../templates/zipcodesearch'], function(Temp) {
-      $("#initialNav").html(Temp)
+    $("#initialNav").html(templates.zipcodesearch)
       console.log("populating nav");
     });
 

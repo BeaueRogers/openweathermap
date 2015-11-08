@@ -5,7 +5,7 @@ define(function(require) {
   e.preventDefault();
   })
  $(document).on("click", "#searchButton", function() {
-    if($("#searchZip").val() = ([0-9]{5}?$)) {
+    if($("#searchZip").val() == ([0-9]{5}?$) {
       console.log("value of search field", $("#searchZip").val());
     }
     else {
