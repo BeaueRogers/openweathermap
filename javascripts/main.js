@@ -14,12 +14,40 @@ requirejs.config({
 });
 
 requirejs(
-    ["jquery", "hbs", "bootstrap", "templates", "userAuth", "q", "zipcodesearch"],
-    function($, Handlebars, bootstrap, templates, userAuth, q, zipcodesearch) {
 
-    $("#initialNav").html(templates.zipcodesearch)
-      console.log("populating nav");
-    });
+    ["jquery", "hbs", "bootstrap", "templates", "userAuth", "q", "firebase", "zipcodesearch"],
+    function($, Handlebars, bootstrap, templates, userAuth, q, firebase, zipcode) {
 
+  $("#login").html(templates.login);
+
+  $(document).on("click", "#registerPage", function(e) {
+    e.preventDefault();
+    $("#login").html(templates.register);
+  });
+
+  $(document).on("click", "#loginPage", function(e) {
+    e.preventDefault();
+    $("#login").html(templates.login);
+  });
+
+  $(document).on("click", "#submitRegister", function(e){
+    e.preventDefault();
+    userAuth.register();
+    $("#login").html(templates.login);
+  });
+
+  $(document).on("click", "#submitLogin", function(e){
+    e.preventDefault();
+    userAuth.logIn();
+    $("#login").hide();
+    $("#initialNav").html();
+  });
+
+  $(document).on("click", "#logOut", function(e){
+    e.preventDefault();
+    userAuth.logOut();
+    // First Hide all App Divs
+    $("#login").html(templates.login);
+  });
 
 });
