@@ -1,4 +1,32 @@
+define(function(require) {
+  var $ = require("jquery");
+ // alert("THIS EXISTS");
+ $(document).on("click", "#searchButton", function(e) {
+    if($("#searchZip").val() = /^[0-9]{5}?$/)  {
+      e.preventDefault();
+      console.log("value of search field", $("#searchZip").val());
+      $("#ziphtml").val().append("#searchZip").val();
+    } else {
+      alert("please enter a proper 5 digit U.S. postal code")
+    }
+  })
+});
 
+/*
+define(function(require) {
+  var $ = require("jquery");
+ // alert("THIS EXISTS");
+ $(document).on("click", "#searchButton", function(e) {
+    if($("#searchZip").val() = /^[0-9]{5}?$/)  {
+      e.preventDefault();
+      console.log("value of search field", $("#searchZip").val());
+    } else {
+        alert("You must enter a valid zipcode");
+    }
+  })
+});
+
+*/
 
 
 

@@ -5,8 +5,8 @@ requirejs.config({
         'lodash': '../lib/bower_components/lodash/lodash.min',
         'hbs': '../lib/bower_components/require-handlebars-plugin/hbs',
         'bootstrap': '../lib/bower_components/bootstrap/dist/js/bootstrap.min',
-        'firebase': '../lib/bower_components/firebase/firebase'
-        'q': '../lib/bower_components/q/q',
+        'firebase': '../lib/bower_components/firebase/firebase',
+        'q': '../lib/bower_components/q/q'
     },
     shim: {
         'bootstrap': ['jquery']
@@ -14,8 +14,13 @@ requirejs.config({
 });
 
 requirejs(
-    ["jquery", "hbs", "bootstrap", "templates", "userAuth", "q"],
-    function($, Handlebars, bootstrap, templates, userAuth, q) {
+    ["jquery", "hbs", "bootstrap", "templates", "userAuth", "q", "zipcodesearch"],
+    function($, Handlebars, bootstrap, templates, userAuth, q, zipcodesearch) {
+
+      require(['hbs!../templates/zipcodesearch'], function(Temp) {
+      $("#initialNav").html(Temp)
+      console.log("populating nav");
+    });
 
 
 });
