@@ -2,12 +2,17 @@ define(function(require) {
   var $ = require("jquery");
  // alert("THIS EXISTS");
  $(document).on("click", "#searchButton", function(e) {
-    //alert("This Exists!");
-    e.preventDefault();
-    console.log("value of search field", $("#searchZip").val());
+  e.preventDefault();
+  })
+ $(document).on("click", "#searchButton", function() {
+    if($("#searchZip").val() = ([0-9]{5}?$)) {
+      console.log("value of search field", $("#searchZip").val());
+    }
+    else {
+      alert("Improper US postal code, enter a valid US postal code")
+    }
   })
 });
-
 
 
 
