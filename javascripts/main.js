@@ -15,8 +15,8 @@ requirejs.config({
 
 requirejs(
 
-    ["jquery", "hbs", "bootstrap", "templates", "userAuth", "q", "firebase", "getWeather", "zipcodesearch"],
-    function($, Handlebars, bootstrap, templates, userAuth, q, firebase, getWeather, zipcode) {
+    ["jquery", "hbs", "bootstrap", "templates", "userAuth", "q", "firebase", "getWeather", "zipCheck"],
+    function($, Handlebars, bootstrap, templates, userAuth, q, firebase, getWeather, zipCheck) {
 
   $("#login").html(templates.login);
 
@@ -40,13 +40,23 @@ requirejs(
     e.preventDefault();
     userAuth.logIn();
     $("#login").hide();
-    // $("#initialNav").html();
+    $("#initialNav").html(templates.zipcode);
 
-    var weatherTemp = templates.weather1;
+    // getWeather.initialSearch()
+    //   .then(function(day){
+    //     $("#weather1").html(templates.weather1(day));
+    //   });
+  });
 
-    getWeather.initialSearch()
-      .then(function(day){
-        $("#weather1").html(weatherTemp(day));
+  $(document).on("click", "#searchButton", function(e){
+    e.preventDefault();
+
+    zipCheck.zipCheck()
+      .then(function(zip){
+        getWeather.initialSearch()
+          .then(function(day){
+            $("#weather1").html(templates.weather1(day));
+          });
       });
   });
 

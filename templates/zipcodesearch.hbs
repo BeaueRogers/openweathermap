@@ -1,3 +1,37 @@
+<nav class="navbar navbar-default row">
+  <div class="container-fluid col-xs-8 col-xs-offset-2">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Weather App</a>
+    </div>
+    <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="search" id="searchZip" pattern="[0-9]{5,5}" class="form-control" placeholder="Enter Zipcode">
+        </div>
+        <button type="submit" id="searchButton" class="btn btn-default">Search!</button>
+    </form>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">1 Day<span class="sr-only">(current)</span></a></li>
+        <li><a href="#">3 Day</a></li>
+        <li><a href="#">5 Day</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Saved Forecasts</a></li>
+        <li><a href="#">Log Out</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+{{!--
 <div>
   <form>
   <div class="zipcode">
@@ -6,7 +40,5 @@
       <button id="searchButton" type="button">Search    <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
     </div>
   </form>
-    <div id="ziphtml">
-    testing
-    </div>
 </div>
+ --}}

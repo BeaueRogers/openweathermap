@@ -6,8 +6,8 @@ define(["jquery", "q"], function($, Q) {
     initialSearch: function(){
 
       var deferred = Q.defer();
-      var zipCode = 60523;
-      var searchString = "http://api.openweathermap.org/data/2.5/weather?zip=60523,us&APPID=87698b85f315acbeb3085f389d2fb89b";
+      var zipCode = $("#searchZip").val();
+      var searchString = "http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&APPID=87698b85f315acbeb3085f389d2fb89b";
 
       $.ajax({url:searchString})
         .done(function(json_data){

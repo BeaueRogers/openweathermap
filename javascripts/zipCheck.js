@@ -1,17 +1,23 @@
-define(function(require) {
-  var $ = require("jquery");
- // alert("THIS EXISTS");
- $(document).on("click", "#searchButton", function(e) {
-  e.preventDefault();
-  })
- $(document).on("click", "#searchButton", function() {
-    if($("#searchZip").val() == ([0-9]{5}?$) {
-      console.log("value of search field", $("#searchZip").val());
+define(["jquery", "firebase", "q"], function($, firebase, Q) {
+
+  return {
+
+    zipCheck: function() {
+      var deferred = Q.defer();
+      var zipCode = $("#searchZip").val();
+
+      if (zipCode.match(/\b\d{5}\b/g)){
+        console.log("zip code is good!");
+        deferred.resolve();
+      } else {
+        console.log("Not a Valid Zip Code");
+      }
+
+
+      return deferred.promise;
     }
-    else {
-      alert("Improper US postal code, enter a valid US postal code")
-    }
-  })
+
+  };
 });
 
 
