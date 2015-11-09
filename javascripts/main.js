@@ -56,6 +56,7 @@ requirejs(
         getWeather.initialSearch()
           .then(function(day){
             $("#weather1").html(templates.weather1(day));
+            $("#initialNav").html(templates.fullnav);
           });
       });
   });
