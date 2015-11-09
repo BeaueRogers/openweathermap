@@ -4,3 +4,4 @@ cow/
 bower_components
 sass
 node_modules
+.sass-cache
