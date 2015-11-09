@@ -15,8 +15,8 @@ requirejs.config({
 
 requirejs(
 
-    ["jquery", "hbs", "bootstrap", "templates", "userAuth", "q", "firebase", "zipcodesearch"],
-    function($, Handlebars, bootstrap, templates, userAuth, q, firebase, zipcode) {
+    ["jquery", "hbs", "bootstrap", "templates", "userAuth", "q", "firebase", "getWeather", "zipcodesearch"],
+    function($, Handlebars, bootstrap, templates, userAuth, q, firebase, getWeather, zipcode) {
 
   $("#login").html(templates.login);
 
@@ -40,7 +40,14 @@ requirejs(
     e.preventDefault();
     userAuth.logIn();
     $("#login").hide();
-    $("#initialNav").html();
+    // $("#initialNav").html();
+
+    var weatherTemp = templates.weather1;
+
+    getWeather.initialSearch()
+      .then(function(day){
+        $("#weather1").html(weatherTemp(day));
+      });
   });
 
   $(document).on("click", "#logOut", function(e){
