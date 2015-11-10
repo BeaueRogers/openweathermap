@@ -8,7 +8,7 @@ define(["jquery", "firebase", "q"], function($, firebase, Q) {
 
       if (zipCode.match(/\b\d{5}\b/g)){
         console.log("zip code is good!");
-        deferred.resolve();
+        deferred.resolve(zipCode);
       } else {
         console.log("Not a Valid Zip Code");
       }

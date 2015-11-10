@@ -2,6 +2,7 @@
   <div class="col-xs-8 col-xs-offset-2 weatherDiv">
     <div class="row">
       <h2>Current Weather at {{name}}</h2>
+      <h4>{{day}}</h4>
       <div class="col-sm-12">
         <img src="http://www.omgubuntu.co.uk/wp-content/uploads/2013/12/Flat-Weather-Icon-Set.png" class="img-responsive defaultWeather">
       </div>
@@ -14,6 +15,6 @@
         <p>Wind Speed: {{wind.speed}}</p>
       </div>
     </div>
-    <button class="btn btn-defualt" cityID="{{city.id}}" id='saveButton{{city.id}}'>Save Weather Info</button>
+    <button class="btn btn-defualt" cityID="{{city.id}}{{day}}" id='saveButton'>Save Weather Info</button>
   </div>
 </div>

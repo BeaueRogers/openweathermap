@@ -2,18 +2,20 @@
   <div class="col-xs-8 col-xs-offset-2 weatherDiv">
     <div class="row">
       <h2>3 Day Forecast for {{city.name}}</h2>
+      {{#each list}}
       <div class="col-sm-4">
+        <h4>{{day}}</h4>
         <img src="http://www.omgubuntu.co.uk/wp-content/uploads/2013/12/Flat-Weather-Icon-Set.png" class="img-responsive defaultWeather">
-      </div>
-      <div class="col-sm-4">
-        {{!-- <p>Temperature(K): {{main.temp}}</p>
+        <p>Day Temperature: {{temp.day}}</p>
+        <p>Night Temperature: {{temp.night}}</p>
         {{#each weather as |Weather|}}
         <p>Conditions: {{Weather.main}}</p>
         {{/each}}
-        <p>Air Pressure: {{main.pressure}}</p>
-        <p>Wind Speed: {{wind.speed}}</p> --}}
+        <p>Air Pressure: {{pressure}}</p>
+        <p>Wind Speed: {{speed}}</p>
+        {{!-- <button class="btn btn-defualt" cityID="{{city.id}}" id='saveButton'>Save Weather Info</button> --}}
       </div>
+      {{/each}}
     </div>
-    <button class="btn btn-defualt" cityID="{{city.id}}" id='saveButton{{city.id}}'>Save Weather Info</button>
   </div>
 </div>

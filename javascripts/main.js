@@ -15,8 +15,10 @@ requirejs.config({
 
 requirejs(
 
-    ["jquery", "hbs", "bootstrap", "templates", "userAuth", "q", "firebase", "getWeather", "zipCheck"],
-    function($, Handlebars, bootstrap, templates, userAuth, q, firebase, getWeather, zipCheck) {
+    ["jquery", "hbs", "bootstrap", "templates", "userAuth", "q", "firebase", "getWeather", "zipCheck", "date", "library"],
+    function($, Handlebars, bootstrap, templates, userAuth, q, firebase, getWeather, zipCheck, date, library) {
+
+  var zipCode = "";
 
   $("#login").html(templates.login);
 
@@ -50,21 +52,76 @@ requirejs(
 
   $(document).on("click", "#searchButton", function(e){
     e.preventDefault();
+    zipCode = $("#searchZip").val();
 
     zipCheck.zipCheck()
-      .then(function(zip){
-        getWeather.initialSearch()
-          .then(function(day){
-            $("#weather1").html(templates.weather1(day));
+      .then(function(zipCode){
+        getWeather.initialSearch(zipCode)
+          .then(function(weather){
+            weather.day = date.dateConvert(weather.dt);
+            $("#weather1").html(templates.weather1(weather));
             $("#initialNav").html(templates.fullnav);
+
+            $(document).on("click", "#saveButton", function(e){
+              library.saveForecast(weather);
+            });
+
+        // $("#3dayButton").removeClass("active");
+        // $("#7dayButton").removeClass("active");
+        // $("#1dayButton").addClass("active");
           });
+      });
+  });
+
+  date.dateConvert(1447088400);
+
+  $(document).on("click", "#3dayButton", function(e){
+    e.preventDefault();
+    getWeather.get3day(zipCode)
+      .then(function(weather){
+        weather.list.forEach(function(currentValue,index,array){
+          currentValue.day = date.dateConvert(currentValue.dt);
+        });
+        $("#weather1").html(templates.weather3(weather));
+
+
+        $("#1dayButton").removeClass("active");
+        $("#7dayButton").removeClass("active");
+        $("#3dayButton").addClass("active");
+      });
+  });
+
+  $(document).on("click", "#7dayButton", function(e){
+    e.preventDefault();
+
+    getWeather.get7day(zipCode)
+      .then(function(weather){
+        weather.list.forEach(function(currentValue,index,array){
+          currentValue.day = date.dateConvert(currentValue.dt);
+        });
+        $("#weather1").html(templates.weather7(weather));
+
+
+
+        $("#1dayButton").removeClass("active");
+        $("#3dayButton").removeClass("active");
+        $("#7dayButton").addClass("active");
+      });
+  });
+
+  $(document).on("click", "#savedUserForecast", function(e){
+    e.preventDefault();
+    library.getForecast()
+      .then(function(saved){
+        $("#weather1").html(templates.weather1(saved));
       });
   });
 
   $(document).on("click", "#logOut", function(e){
     e.preventDefault();
     userAuth.logOut();
-    // First Hide all App Divs
+    $("#weather1").hide();
+    $("#initialNav").hide();
     $("#login").html(templates.login);
   });
 

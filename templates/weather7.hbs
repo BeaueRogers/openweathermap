@@ -1,20 +1,18 @@
-{{!-- <h1>7 day weather forecast!</h1> --}}
-<div class="row">
-  <div class="col-xs-8 col-xs-offset-2 weatherDiv">
-    <div class="row">
-      <h2>Current Weather at {{name}}</h2>
-      <div class="col-sm-12">
-        <img src="http://www.omgubuntu.co.uk/wp-content/uploads/2013/12/Flat-Weather-Icon-Set.png" class="img-responsive defaultWeather">
-      </div>
-      <div class="col-sm-12">
-        <p>Temperature(K): {{main.temp}}</p>
-        {{#each weather as |Weather|}}
-        <p>Conditions: {{Weather.main}}</p>
-        {{/each}}
-        <p>Air Pressure: {{main.pressure}}</p>
-        <p>Wind Speed: {{wind.speed}}</p>
-      </div>
-    </div>
-    <button class="btn btn-defualt" cityID="{{city.id}}" id='saveButton{{city.id}}'>Save Weather Info</button>
+<div class="row weatherDiv">
+  <h2>7 Day Forecast for {{city.name}}</h2>
+  {{#each list}}
+  <div class="col-sm-2">
+    <h4>{{day}}</h4>
+    <img src="http://www.omgubuntu.co.uk/wp-content/uploads/2013/12/Flat-Weather-Icon-Set.png" class="img-responsive defaultWeather">
+    <p>Day Temperature: {{temp.day}}</p>
+    <p>Night Temperature: {{temp.night}}</p>
+    {{#each weather as |Weather|}}
+    <p>Conditions: {{Weather.main}}</p>
+    {{/each}}
+    <p>Air Pressure: {{pressure}}</p>
+    <p>Wind Speed: {{speed}}</p>
+    {{!-- <button class="btn btn-defualt" cityID="{{city.id}}" id='saveButton'>Save Weather Info</button> --}}
   </div>
+  {{/each}}
 </div>
+
